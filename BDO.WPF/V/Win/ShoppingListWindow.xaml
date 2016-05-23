@@ -1,0 +1,22 @@
+﻿<Window x:Class="BDO.WPF.V.Win.ShoppingListWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:BDO.WPF.Controls"
+        xmlns:finders="clr-namespace:BDO.WPF.V.Finders"
+        xmlns:domain="clr-namespace:BDO.WPF.V.Domain"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        Background="Transparent"
+        mc:Ignorable="d"
+        Title="ShoppingListWindow" Height="{Binding ElementName=Host, Path=Height}" Width="400">
+    <Window.Resources>
+        <Style TargetType="Window" BasedOn="{StaticResource BaseWindowStyle}"/>
+    </Window.Resources>
+    <Grid>
+        <controls:WindowHost Title="Shopping List" x:Name="Host" Height="500" VerticalAlignment="Top">
+            <domain:ShoppingListView/>
+        </controls:WindowHost>
+    </Grid>
+</Window>

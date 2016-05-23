@@ -1,0 +1,59 @@
+﻿<Window x:Class="BDO.WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        xmlns:controls="clr-namespace:BDO.WPF.Controls"
+        xmlns:screens="clr-namespace:BDO.WPF.V.Screens"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1100">
+    <Window.Resources>
+    </Window.Resources>
+    <Grid>
+        <controls:WindowHost Title="Black Desert Empire Builder">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                
+                <Menu Grid.Row="0">
+                    <MenuItem Header="Manage">
+                        <MenuItem Header="Character" Command="{Binding Path=ManageCharacter}" IsCheckable="True" IsChecked="{Binding Path=CharacterIsActive, Mode=OneWay}"/>
+                        <MenuItem Header="Lists" Command="{Binding Path=ManageLists}"/>
+                        <MenuItem Header="Items" Command="{Binding Path=ManageItems}"/>
+                    </MenuItem>
+                    <MenuItem Header="Tools">
+                        <MenuItem Header="Energy Timer" Command="{Binding Path=ShowEnergyTimer}" IsCheckable="True" IsChecked="{Binding Path=EnergyTimerIsActive, Mode=OneWay}"/>
+                        <MenuItem Header="Hotbar" Command="{Binding Path=ShowHotbar}" IsCheckable="True" IsChecked="{Binding Path=HotbarIsActive, Mode=OneWay}"/>
+                        <MenuItem Header="Market Scraper" Command="{Binding Path=MarketScraper}" IsCheckable="True" IsChecked="{Binding Path=MarketScraperIsActive, Mode=OneWay}"/>
+                        <MenuItem Header="Merge Items" Command="{Binding Path=MergeItems}"/>
+                    </MenuItem>
+                    <MenuItem Header="Lists">
+                        <MenuItem Header="All Items" Command="{Binding Path=ShowMasterActionList}" IsCheckable="True" IsChecked="{Binding Path=ActionListIsActive, Mode=OneWay}"/>
+                        <Separator/>
+                        <MenuItem Header="Shopping List" Command="{Binding Path=ShowItemList}"/>
+                        <Separator/>
+                        <MenuItem Header="Top 20 Crafts" Command="{Binding Path=ShowTopTwenty}"/>
+                        <MenuItem Header="Best Processing Recipes" Command="{Binding Path=ShowProcessingList}"/>
+                    </MenuItem>
+                </Menu>
+                
+                <ContentPresenter Content="{Binding Path=ActiveViewModel}" Grid.Row="1">
+                    
+                </ContentPresenter>
+                
+                <!--<screens:ItemScreen DataContext="{Binding Path=ActiveViewModel}" Grid.Row="1" />-->
+                
+                <TextBlock Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Path=SystemMessage}" Margin="1" Foreground="{StaticResource FontBrush}"/>
+            </Grid>
+        </controls:WindowHost>
+        <!--<controls:WindowHost Title="Window">
+            <test:ButtonTest/>
+        </controls:WindowHost>-->
+    </Grid>
+</Window>

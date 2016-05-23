@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="BDO.WPF.V.Screens.ShoppingListScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BDO.WPF.V.Screens"
+             xmlns:finders="clr-namespace:BDO.WPF.V.Finders"
+             xmlns:domain="clr-namespace:BDO.WPF.V.Domain"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="600">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <finders:ShoppingListFinderView Grid.Column="0" Margin="5,5,5,30"
+                                        DataContext="{Binding Path=ShoppingListFinderViewModel}"/>
+        
+        <Button Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                Content="New List" Margin="5" 
+                Style="{StaticResource BaseButtonStyle}"
+                Command="{Binding Path=NewShoppingList}"/>
+        
+        <domain:NewShoppingListView Grid.Column="1" Margin="5" DataContext="{Binding Path=SelectedShoppingList}"/>
+    </Grid>
+</UserControl>

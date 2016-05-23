@@ -1,0 +1,37 @@
+﻿Item Lists
+	Give an item list to various views to perform bulk operations
+	Market Observation List
+	Shopping List
+	City Production List
+
+City Map
+	Housing
+	Workshops, lodging, etc.
+
+Node Map
+
+Central Repository for View Models
+
+Static Repoistory for Domain Object Repositories
+
+Reorganize Main Window
+
+Expose Processing Data
+
+Display Interesting Views of Marketing Data
+
+Update Marketing Data Presentation
+
+Develop Styled Datagrid
+	
+Improve New Recipe Creation Workflow
+
+Impelement Resizable Windows
+
+Character Sheet Screen
+
+Production Observation
+	Character skill start
+	Character skill finish
+
+Secondary Results of PRoduction Observation

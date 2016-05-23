@@ -1,0 +1,239 @@
+﻿<UserControl x:Class="BDO.WPF.Controls.WindowHost"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BDO.WPF.Controls"
+             Name="WindowHostControl"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BodyStyle" TargetType="Grid">
+                <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+            </Style>
+            <Style x:Key="HeaderStyle" TargetType="Grid">
+                <Setter Property="Background" Value="{StaticResource HeaderBrush}"/>
+            </Style>
+
+            <Style TargetType="local:WindowHost">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="local:WindowHost">
+                            <Border DataContext="{Binding ElementName=WindowHostControl}"
+                                BorderBrush="{StaticResource BorderBrush}" 
+                                Name="OBorder"
+                                Height="Auto"
+                                VerticalAlignment="Top"
+                                BorderThickness="1" ClipToBounds="True" 
+                                Padding="0" CornerRadius="5" >
+                                <Grid Height="Auto">
+                                    <Grid Margin="1" Height="Auto">
+                                        <Grid.Background>
+                                            Transparent
+                                        </Grid.Background>
+
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="17"/>
+                                            <RowDefinition />
+                                        </Grid.RowDefinitions>
+
+                                        <Grid Grid.Row="0" Style="{StaticResource HeaderStyle}" Margin="0" MouseDown="UIElement_OnMouseDown">
+                                            <ToggleButton Foreground="{StaticResource FontBrush}"
+                                                          ToolTip="Collapse"
+                                                          Margin="5, 5, 0, 0" HorizontalAlignment="Left" 
+                                                          VerticalAlignment="Bottom" Width="15" Height="15" 
+                                                          Name="ToggleButton" IsChecked="False">
+                                                <ToggleButton.Template>
+                                                    <ControlTemplate>
+                                                        <Grid Background="Transparent">
+                                                            <Path Stroke="{StaticResource FontBrush}" Data="M 1,10 10,10 M 1,8 10,8 M 1,6 10,6 "/>
+                                                        </Grid>
+                                                    </ControlTemplate>
+                                                </ToggleButton.Template>
+                                            </ToggleButton>
+
+                                            <CheckBox Margin="21, 0, 0, 0" Background="Transparent" 
+                                                      VerticalAlignment="Center" HorizontalAlignment="Left" ToolTip="Keep on Top" 
+                                                      Checked="ToggleButton_OnChecked"
+                                                      Unchecked="ToggleButton_OnUnchecked">
+                                                <CheckBox.Template>
+                                                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                                                        <BulletDecorator Background="Transparent" Width="12">
+                                                            <BulletDecorator.Bullet>
+                                                                <Border x:Name="Border"  
+                                                                    Width="11" 
+                                                                    Height="11" 
+                                                                    CornerRadius="2" 
+                                                                    Background="Transparent"
+                                                                    BorderThickness="1"
+                                                                    BorderBrush="{StaticResource FontBrush}">
+                                                                    <Path Width="7" Height="7" 
+                                                                      x:Name="CheckMark"
+                                                                      SnapsToDevicePixels="False" 
+                                                                      Stroke="{StaticResource FontBrush}"
+                                                                      StrokeThickness="1"
+                                                                      Data="M 0 0 L 7 7 M 0 7 L 7 0" />
+                                                                </Border>
+                                                            </BulletDecorator.Bullet>
+                                                            <ContentPresenter Margin="4,0,0,0"
+                                                      VerticalAlignment="Center"
+                                                      HorizontalAlignment="Left"
+                                                      RecognizesAccessKey="True"/>
+                                                        </BulletDecorator>
+                                                        <ControlTemplate.Triggers>
+                                                            <Trigger Property="IsChecked" Value="false">
+                                                                <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
+                                                            </Trigger>
+                                                            <Trigger Property="IsChecked" Value="{x:Null}">
+                                                                <Setter TargetName="CheckMark" Property="Data" Value="M 0 7 L 7 0" />
+                                                            </Trigger>
+                                                            <Trigger Property="IsMouseOver" Value="true">
+                                                                <Setter TargetName="Border" Property="Background" Value="{StaticResource CheckboxFocusBrush}" />
+                                                            </Trigger>
+                                                        </ControlTemplate.Triggers>
+                                                    </ControlTemplate>
+                                                </CheckBox.Template>
+                                            </CheckBox>
+
+                                            <TextBlock Style="{StaticResource HeaderTextBlockStyle}" 
+                                                   Text="{Binding Path=Title}"
+                                                   HorizontalAlignment="Center" 
+                                                   VerticalAlignment="Center"/>
+
+                                            <Button HorizontalAlignment="Right" VerticalAlignment="Center"
+                                                    Margin="0, 0, 5, 0" 
+                                                    Style="{StaticResource ChromeButtonStyle}"
+                                                    Width="15" Height="15" Click="Close_OnClick">
+                                                <Button.Content>
+                                                    <Grid>
+                                                        <Path Stroke="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}" Data="M 1,1 10,10 M 1,10 10,1"></Path>
+                                                    </Grid>
+                                                </Button.Content>
+                                            </Button>
+
+                                            <Button HorizontalAlignment="Right" VerticalAlignment="Center" 
+                                                Margin="0, 0, 20, 0" Style="{StaticResource ChromeButtonStyle}" 
+                                                Width="15" Height="15" 
+                                                Click="Minimize_OnClick">
+                                                <Button.Content>
+                                                    <Grid>
+                                                        <Path Stroke="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}" Data="M 1,10 10,10 "/>
+                                                    </Grid>
+                                                </Button.Content>
+                                            </Button>
+                                        </Grid>
+
+                                        <Grid Grid.Row="1" Style="{StaticResource BodyStyle}" Name="ContentGrid" Height="Auto">
+                                            <ContentPresenter Name="ContentPresenter" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                        </Grid>
+                                    </Grid>
+                                    <Border CornerRadius="5" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" Height="Auto">
+                                    </Border>
+                                </Grid>
+                            </Border>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger SourceName="ToggleButton" Property="IsChecked" Value="True">
+                                    <Setter TargetName="ContentPresenter" Property="Visibility" Value="Collapsed"/>
+                                    <Setter TargetName="ContentGrid" Property="Visibility" Value="Collapsed"/>
+                                </Trigger>
+                                <Trigger SourceName="ToggleButton" Property="IsChecked" Value="False">
+                                    <Setter TargetName="ContentPresenter" Property="Visibility" Value="Visible"/>
+                                    <Setter TargetName="ContentGrid" Property="Visibility" Value="Visible"/>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Border DataContext="{Binding ElementName=WindowHostControl}" Name="OutterBorder"
+            CornerRadius="5" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" ClipToBounds="True" Padding="0">
+        <Grid>
+            <Grid Margin="1">
+                <Grid.Background>
+                    Transparent
+                </Grid.Background>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="17"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0"  Margin="0" Style="{StaticResource HeaderStyle}">
+                   
+
+                    <Button HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5, 0, 0, 0" Style="{StaticResource ChromeButtonStyle}" Width="15" Height="15" Click="Hide_OnClick">
+                        <Button.Content>
+                            <Path Stroke="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}" Data="M 1,10 10,10 M 1,8 10,8 M 1,6 10,6 "/>
+                        </Button.Content>
+                    </Button>
+
+                    <CheckBox Margin="21, 0, 0, 0" Background="Transparent" VerticalAlignment="Center" ToolTip="Keep on Top">
+                        <CheckBox.Template>
+                            <ControlTemplate TargetType="{x:Type CheckBox}">
+                                <BulletDecorator Background="Transparent">
+                                    <BulletDecorator.Bullet>
+                                        <Border x:Name="Border"  
+                                                Width="11" 
+                                                Height="11" 
+                                                CornerRadius="2" 
+                                                Background="Transparent"
+                                                BorderThickness="1"
+                                                BorderBrush="{StaticResource FontBrush}">
+                                            <Path Width="7" Height="7" 
+                                                  x:Name="CheckMark"
+                                                  SnapsToDevicePixels="False" 
+                                                  Stroke="Black"
+                                                  StrokeThickness="2"
+                                                  Data="M 0 0 L 7 7 M 0 7 L 7 0" />
+                                        </Border>
+                                    </BulletDecorator.Bullet>
+                                    <ContentPresenter Margin="4,0,0,0"
+                                                      VerticalAlignment="Center"
+                                                      HorizontalAlignment="Left"
+                                                      RecognizesAccessKey="True"/>
+                                </BulletDecorator>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsChecked" Value="false">
+                                        <Setter TargetName="CheckMark" Property="Visibility" Value="Collapsed"/>
+                                    </Trigger>
+                                    <Trigger Property="IsChecked" Value="{x:Null}">
+                                        <Setter TargetName="CheckMark" Property="Data" Value="M 0 7 L 7 0" />
+                                    </Trigger>
+                                    <Trigger Property="IsMouseOver" Value="true">
+                                        <Setter TargetName="Border" Property="Background" Value="{StaticResource CheckboxFocusBrush}" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </CheckBox.Template>
+                    </CheckBox>
+                    
+                    <TextBlock Style="{StaticResource HeaderTextBlockStyle}" HorizontalAlignment="Center" VerticalAlignment="Center" Text="{Binding Path=Title}"/>
+
+                    <Button HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 20, 0" Style="{StaticResource ChromeButtonStyle}" Width="15" Height="15" Click="Minimize_OnClick">
+                        <Button.Content>
+                            <Path Stroke="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}" Data="M 1,10 10,10 "/>
+                        </Button.Content>
+                    </Button>
+
+                    <Button HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0, 0, 5, 0" Style="{StaticResource ChromeButtonStyle}" Width="15" Height="15" Click="Close_OnClick">
+                        <Button.Content>
+                            <Path Stroke="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}" Data="M 1,1 10,10 M 1,10 10,1"></Path>
+                        </Button.Content>
+                    </Button>
+                </Grid>
+
+                <Grid Grid.Row="1" Style="{StaticResource BodyStyle}" Name="ContentGrid">
+                    <ContentPresenter/>
+                </Grid>
+            </Grid>
+            <Border CornerRadius="5" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>
+

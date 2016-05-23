@@ -1,0 +1,21 @@
+﻿<Window x:Class="BDO.WPF.V.Win.ScraperWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        xmlns:local="clr-namespace:BDO.WPF.V.Win"
+        xmlns:controls="clr-namespace:BDO.WPF.Controls"
+        xmlns:scraper="clr-namespace:BDO.WPF.V.Scraper"
+        mc:Ignorable="d"
+        Title="Scraper Window" Height="500" Width="475">
+    <Grid>
+        <controls:WindowHost>
+            <scraper:ScraperView/>
+        </controls:WindowHost>
+        
+    </Grid>
+</Window>
+

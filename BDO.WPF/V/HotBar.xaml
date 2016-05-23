@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="BDO.WPF.V.HotBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BDO.WPF.V"
+             mc:Ignorable="d" 
+             d:DesignHeight="42" d:DesignWidth="300">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Resources/ExpanderDefaultStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            <Style TargetType="Button" BasedOn="{StaticResource BaseButtonStyle}">
+                <Setter Property="Width" Value="35"/>
+                <Setter Property="Height" Value="35"/>
+                <Setter Property="Margin" Value="2, 0, 3, 1"/>
+            </Style>
+            <Style TargetType="Image">
+                <Setter Property="Margin" Value="2"/>
+                <Setter Property="Stretch" Value="Uniform"></Setter>
+            </Style>
+
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <Expander ExpandDirection="Right" BorderThickness="1" BorderBrush="{StaticResource BorderBrush}"
+              HorizontalAlignment="Left" VerticalAlignment="Stretch"
+              Background="{StaticResource BackgroundBrush}"
+              Style="{StaticResource ExpanderDefaultStyle}">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Button Command="{Binding Path=ShowMasterActionList}" ToolTip="All Items List">
+                <Image Source="../Assets/hammer icon.png" Margin="5"/>
+            </Button>
+            <Button Command="{Binding Path=ShowItemList}" ToolTip="List Window">
+                <Image Source="../Assets/tax icon.png" Margin="5"/>
+            </Button>
+
+            <Border BorderThickness="1,0,0,0" BorderBrush="{StaticResource FontBrush}" Margin="5, 5"/>
+
+            <Button Command="{Binding Path=MarketScraper}" ToolTip="Market Scraper">
+                <Image Source="../Assets/market observation.png" Margin="5"/>
+            </Button>
+            <Button Command="{Binding Path=ShowEnergyTimer}" ToolTip="Energy Timer">
+                <Image Source="../Assets/timer gray.png"/>
+            </Button>
+
+            <Border BorderThickness="1,0,0,0" BorderBrush="{StaticResource FontBrush}" Margin="5, 5"/>
+
+            <Button Command="{Binding Path=ManageCharacter}" ToolTip="Manager Character">
+                <Image Source="../Assets/life skills icon.png"/>
+            </Button>
+        </StackPanel>
+    </Expander>
+</UserControl>

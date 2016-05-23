@@ -1,0 +1,120 @@
+﻿<Window x:Class="BDO.WPF.Controls.EnergyTimer"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" 
+        AllowsTransparency="True" 
+        WindowStyle="None"
+        Name="TimerWindow"
+        Background="Transparent"
+        Title="Energy Timer" Height="70" Width="70"
+        MouseLeave="EnergyTimer_OnMouseLeave"
+        MouseEnter="EnergyTimer_OnMouseEnter"
+        MouseDown="EnergyTimer_OnMouseDown">
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.MouseLeave">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Duration="0:0:1"
+                                     To="0.0"
+                                     Storyboard.TargetName="ResetButton"
+                                     Storyboard.TargetProperty="Opacity"/>
+
+                    <!--<DoubleAnimation Duration="0:0:.5"
+                                     To=".9"
+                                     Storyboard.TargetName="ClockBackground"
+                                     Storyboard.TargetProperty="Opacity"/>
+
+                    <DoubleAnimation Duration="0:0:.5"
+                                     Storyboard.TargetName="ClockBorder"
+                                     Storyboard.TargetProperty="(Background).Opacity"
+                                     To="0"/>-->
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+        
+        <EventTrigger RoutedEvent="Window.MouseEnter">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Duration="0:0:.5" 
+                                     To=".9"
+                                     Storyboard.TargetName="ResetButton"
+                                     Storyboard.TargetProperty="Opacity"/>
+                    
+                    <!--<DoubleAnimation Duration="0:0:.5"
+                                     To="0"
+                                     Storyboard.TargetName="ClockBackground"
+                                     Storyboard.TargetProperty="Opacity"/>
+                    
+                    <DoubleAnimation Duration="0:0:.5"
+                                     Storyboard.TargetName="ClockBorder"
+                                     Storyboard.TargetProperty="(Background).Opacity"
+                                     To=".9"/>-->
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid Name="ClockGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="28*"/>
+            <RowDefinition Height="33*"/>
+        </Grid.RowDefinitions>
+        <Ellipse Name="ClockBackground" 
+                 Grid.Row="0" Grid.RowSpan="4"
+                 Fill="{StaticResource BackgroundBrush}"
+                 Width="{Binding ElementName=TimerWindow, Path=Width}" 
+                 Height="{Binding ElementName=TimerWindow, Path=Height}" 
+                 HorizontalAlignment="Center" VerticalAlignment="Center"
+                 Opacity=".8" />
+
+        <Path Name="Midnight" 
+              Grid.Row="0" Grid.RowSpan="4"
+              Data="m 0,0 l 0,3" Stroke="Black" 
+              HorizontalAlignment="Center"
+              RenderTransformOrigin=".5,.5"/>
+
+        <Path Name="FourOclock" 
+              Grid.Row="0" Grid.RowSpan="4"
+              Data="m 0,0 l 0,3" Stroke="Black" 
+              HorizontalAlignment="Center"
+              RenderTransformOrigin=".5,.5">
+            <Path.RenderTransform>
+                <RotateTransform Angle="120"/>
+            </Path.RenderTransform>
+        </Path>
+
+        <Path Name="EightOclock" 
+              Grid.Row="0" Grid.RowSpan="4"
+              Data="m 0,0 l 0,3" Stroke="Black" 
+              HorizontalAlignment="Center"
+              RenderTransformOrigin=".5,.5">
+            <Path.RenderTransform>
+                <RotateTransform Angle="-120"/>
+            </Path.RenderTransform>
+        </Path>
+
+        <Path Name="HandPath"
+              Grid.Row="0" Grid.RowSpan="4"
+              Data="m 0,5 l 0,30" Stroke="Black" 
+              HorizontalAlignment="Center" VerticalAlignment="Stretch"
+              RenderTransformOrigin="0,.5"/>
+
+        <Button Name="ResetButton" 
+                Grid.Row="3" 
+                Click="ResetButton_OnClick" 
+                HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="30" Width="30" Opacity="0"
+                Style="{StaticResource BaseButtonStyle}">
+            <Button.Template>
+                <ControlTemplate>
+                    <Grid Background="Transparent">
+                        <Path Stroke="Black" StrokeThickness="1"
+                              Data="F1 M 6,6 A 12,12 0 1 0 24,6 m 0,0 l -3,3 l 0,-6 l 6,0 l -3. 3 " />
+                    </Grid>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</Window>

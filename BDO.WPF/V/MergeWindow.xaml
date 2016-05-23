@@ -1,0 +1,61 @@
+﻿<Window x:Class="BDO.WPF.V.MergeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BDO.WPF.V"
+        mc:Ignorable="d"
+        Title="MergeWindow" Height="300" Width="300">
+    <Grid Margin="5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Select Source" Command="{Binding Path=SelectSource}"/>
+        <TextBlock Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" Text="{Binding Path=SelectedSource.Name}"/>
+        
+        <Button Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Select Target" Command="{Binding Path=SelectTarget}"/>
+        <TextBlock Grid.Row="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Text="{Binding Path=SelectedTarget.Name}"/>
+        
+        <Grid Grid.Row="2" DataContext="{Binding Path=Results}">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" 
+                       HorizontalAlignment="Left" 
+                       Text="{Binding Path=MarketObservationsRedirected, StringFormat='Market Observations: {0}'}"/>
+
+            <TextBlock Grid.Row="1" 
+                       HorizontalAlignment="Left" 
+                       Text="{Binding Path=ShoppingListItemsRedirected, StringFormat='Shopping Lists: {0}'}"/>
+
+            <TextBlock Grid.Row="2" 
+                       HorizontalAlignment="Left" 
+                       Text="{Binding Path=RecipePrimaryResultsRedirected, StringFormat='Recipe - Primary: {0}'}"/>
+
+            <TextBlock Grid.Row="3" 
+                       HorizontalAlignment="Left" 
+                       Text="{Binding Path=RecipeSecondaryResultsRedirected, StringFormat='Recipe - Secondary: {0}'}"/>
+
+            <TextBlock Grid.Row="4" 
+                       HorizontalAlignment="Left" 
+                       Text="{Binding Path=RecipeMaterialsRedirected, StringFormat='Recipe - Materials: {0}'}"/>
+
+            <TextBlock Grid.Row="5" 
+                       HorizontalAlignment="Left" 
+                       Text="{Binding Path=RecipesMerged, StringFormat='Recipes: {0}'}"/>
+        </Grid>
+        
+        <Button Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Merge" Command="{Binding Path=Merge}"/>
+        
+    </Grid>
+</Window>
