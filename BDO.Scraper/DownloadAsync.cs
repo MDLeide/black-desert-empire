@@ -4,7 +4,7 @@ using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace BDO.Scraper
+namespace BDO.WebScraper
 {
     class DownloadAsync
     {

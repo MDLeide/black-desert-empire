@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace BDO.Scraper
+namespace BDO.WebScraper
 {
     class RecipeParse
     {

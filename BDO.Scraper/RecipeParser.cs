@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using HtmlAgilityPack;
 
-namespace BDO.Scraper
+namespace BDO.WebScraper
 {
     class RecipeParser
     {

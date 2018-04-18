@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using HtmlAgilityPack;
 
-namespace BDO.Scraper
+namespace BDO.WebScraper
 {
     class DesignListParser
     {

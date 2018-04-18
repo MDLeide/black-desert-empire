@@ -8,7 +8,7 @@ using BDO.Domain.Enum;
 using BDO.Persistence.Repo;
 using BDO.Utl;
 
-namespace BDO.Scraper
+namespace BDO.WebScraper
 {
     static class RecipePreimport
     {

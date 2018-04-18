@@ -1,4 +1,4 @@
-namespace BDO.Scraper
+namespace BDO.WebScraper
 {
     class DesignParse
     {

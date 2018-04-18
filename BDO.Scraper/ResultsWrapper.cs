@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using BDO.Domain;
 
-namespace BDO.Scraper
+namespace BDO.WebScraper
 {
     class ResultsWrapper
     {

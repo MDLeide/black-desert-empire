@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDO", "BDO\BDO.csproj", "{3EF33D09-4492-402F-AFCF-FE0FD5F3C963}"
 EndProject
@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDO.WPF", "BDO.WPF\BDO.WPF.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDO.Import", "BDO.Import\BDO.Import.csproj", "{4BE51DED-E010-4C43-97D3-70B908857015}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDO.Scraper", "BDO.Scraper\BDO.Scraper.csproj", "{5A4C7733-0BEA-48AA-82D3-446182F4E448}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BDO.WebScraper", "BDO.Scraper\BDO.WebScraper.csproj", "{5A4C7733-0BEA-48AA-82D3-446182F4E448}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NTC.WPF", "..\NTC.WPF\NTC.WPF\NTC.WPF.csproj", "{9FCB15E9-3338-44F6-857E-E005AE026AB1}"
 EndProject
@@ -72,5 +72,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6A7383BF-A5FF-4FEC-8240-A9A1F5E68577}
 	EndGlobalSection
 EndGlobal

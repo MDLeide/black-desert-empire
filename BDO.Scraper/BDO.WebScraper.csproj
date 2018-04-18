@@ -7,8 +7,8 @@
     <ProjectGuid>{5A4C7733-0BEA-48AA-82D3-446182F4E448}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BDO.Scraper</RootNamespace>
-    <AssemblyName>BDO.Scraper</AssemblyName>
+    <RootNamespace>BDO.WebScraper</RootNamespace>
+    <AssemblyName>BDO.WebScraper</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
