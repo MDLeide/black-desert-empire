@@ -1,7 +1,7 @@
 # Black Desert Online: Empire
 _A utility written for Black Desert Online to support economic activities._
 
-_[The application is no longer being updated. In this, its final state, it remains unoptimized. Most of the features should work, however, the data loading strategy was hastily and naievely implemented, so load times can be a bit annoying. There may also be application crashing bugs in certain cases.]_
+_[The application is no longer being updated. In this, its final state, it remains unoptimized. Most of the features should work, however, the data loading strategy was hastily and naievely implemented, so load times can be a bit annoying. There may also be application crashing bugs in certain cases. Much of the software architecture is lacking, as it was piecemealed together. It lives here for posterity.]_
 ## Summary
 BDO: Empire is a software utility designed to help a player efficiently grow their wealth in the massive multiplayer online role playing game Black Desert Online – a game with complex economic systems and a regulated marketplace. By capturing and analyzing data about the state of the in-game marketplace, Empire is able to identify economic opportunities and provide intelligence on how to exploit them. These features are conveniently exposed in a configurable UI which has been designed to feel at home on top of the main game window.
 
